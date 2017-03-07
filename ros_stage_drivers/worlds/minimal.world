@@ -1,0 +1,32 @@
+# Simulation worlds are specified using a simple tree-structured
+# configuration file, or by user programs making individual object
+# creation and configuration function calls. This is an example of a
+# simple configuration file
+# size of the world in meters [x y z]
+size [16 16 3]
+# create and specify an environment of solid walls loaded from an image
+model
+(
+# size of the model in meters [x y z] - fill the whole world
+size3 [16 16 0.5]
+color "gray30"
+# draw a 1m grid over this model
+gui_grid 1
+# this model can not be moved around with the mouse
+gui_movemask 0
+# interpret this image file as an occupancy grid and
+# construct a set of blocks that fill this grid
+bitmap "bitmaps/cave.png"
+# model has a solid boundary wall surrounding the blocks
+boundary 1
+)
+# create and specify a mobile robot carrying a laser scanner
+position
+(
+name "MySimpleRobot"
+color "red"
+size3 [0.5 0.5 0.4]
+# pose of the model in the world [x y heading]
+pose [-2.551 -0.281 -39.206 0]
+# laser() # default pose is at parent’s origin facing forwards
+)
